@@ -21,7 +21,6 @@ namespace Foodly.Controllers
         public object Index()
         {
             Context c = new Context();
-            bool b = c.Database.EnsureCreated();
             var variable = c.Users.ToList();
             return View(variable);
         }

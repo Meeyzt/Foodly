@@ -12,8 +12,6 @@ namespace Foodly.Models
         [Required]
         public string Header { get; set; }
         [Required]
-        public string Adress { get; set; }
-        [Required]
         public string Blog { get; set; }
         [Required]
         public string PictureURL { get; set; }
@@ -21,8 +19,6 @@ namespace Foodly.Models
         public string RestaurantName { get; set; }
         [Required]
         public double Star { get; set; }
-        [Required]
-        public string ProductName { get; set; }
         [Required]
         public DateTime PublishDate { get; set; }
         [Required]

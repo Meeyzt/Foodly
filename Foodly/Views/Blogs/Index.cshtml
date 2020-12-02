@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Blogs";
+}
+
+<section class="hero-wrap hero-wrap-2" style="        background-image: url(/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center mb-4">
+                <h1 class="mb-2 bread">Oylamalar</h1>
+            </div>
+        </div>
+    </div>
+</section>
+@*Blogs lists and pages*@
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+
+            @for (int i = 0; i < 6; i++)
+            {
+<div class="col-md-4 ftco-animate">
+    <div class="blog-entry">
+        <a href="blog-single.html" class="block-20" style="background-image: url('/images/image_6.jpg');">
+        </a>
+        <div class="text pt-3 pb-4 px-4">
+            <div class="meta">
+                <div><a href="#">Sept. 06, 2019</a></div>
+                <div><a href="#">Admin</a></div>
+            </div>
+            <h3 class="heading"><a href="#">Taste the delicious foods in Asia</a></h3>
+            <div>dqwdqwdwqdwqdwqdwq</div>
+            <p class="clearfix">
+                <a href="#" class="float-left read"><u>Read more</u></a>
+                <a href="#" class="float-right meta-chat">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-right-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" />
+                    </svg> 3
+                </a>
+            </p>
+        </div>
+    </div>
+</div>};
+
+        </div>
+        <div class="row no-gutters my-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
