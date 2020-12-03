@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Foodly.Migrations
 {
-    public partial class initModels : Migration
+    public partial class initMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,14 +33,13 @@ namespace Foodly.Migrations
                     ReviewID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Header = table.Column<string>(nullable: false),
-                    Adress = table.Column<string>(nullable: false),
                     Blog = table.Column<string>(nullable: false),
                     PictureURL = table.Column<string>(nullable: false),
                     RestaurantName = table.Column<string>(nullable: false),
                     Star = table.Column<double>(nullable: false),
-                    ProductName = table.Column<string>(nullable: false),
                     PublishDate = table.Column<DateTime>(nullable: false),
                     Price = table.Column<int>(nullable: false),
+                    Adress = table.Column<string>(nullable: false),
                     Publish = table.Column<bool>(nullable: false),
                     UserID = table.Column<int>(nullable: true)
                 },
