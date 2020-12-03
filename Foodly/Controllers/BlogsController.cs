@@ -19,16 +19,12 @@ namespace Foodly.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult WriteBlog(string Header,double star,string RestaurantName,string Price,string Blog)
+        public IActionResult WriteBlog(string Header,string restaurent,double star,int price,string Blog)
         {
-            string Header2 = Header;
-            double star2 = star;
-            string RestaurantName2 = RestaurantName;
-            string Price2 = Price;
-            string Blog2 = Blog;
-
+            
 
             return View();
         }
+
     }
 }
