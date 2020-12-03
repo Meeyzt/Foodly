@@ -58,8 +58,8 @@ namespace Foodly
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "javascript",
-                    pattern: "{controller=Blogs}/{action=WriteBlog}/{id?}");
+                    name: "blog",
+                    pattern: "{controller=Blogs}/{action=Blog}/{id?}");
             });
         }
     }

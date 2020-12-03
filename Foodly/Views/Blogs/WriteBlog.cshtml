@@ -19,23 +19,22 @@
 
 
     <section>
-        <form method="post">
+        <form method="post" asp-action="WriteBlog" enctype="multipart/form-data" asp-validation-summary="ModelOnly">
             <div style="margin-left:20px; margin-top:30px;">
-                <span>Başlık</span><br />
-                @Html.TextBoxFor(x => x.Header)<br />
-                <span>Yıldız</span><br />
-                @Html.TextBoxFor(x => x.Star)<br />
-                <span>Yer ismi</span><br />
-                @Html.TextBoxFor(x => x.RestaurantName)<br />
-                <span>Fiyat</span><br />
-                @Html.TextBoxFor(x => x.Price)<br />
-                <span>Yorumunuz</span>
+                <span>Başlık(Yazınızın en üstünde görünecektir | Yorum ile ayrı isimler içerebilir.)</span><br />
+                @Html.TextBoxFor(x => x.Header, new { style = "width:100%" })<br />
+                <span>Yıldız (1-5 | 1 en düşük , 5 en yüksek)</span><br />
+                @Html.TextBoxFor(x => x.Star, new { style = "width:100%" })<br />
+                <span>Yer ismi(Örneğin; Foodly Restaurant)</span><br />
+                @Html.TextBoxFor(x => x.RestaurantName, new { style = "width:100%" })<br />
+                <span>Fiyat (Para birimi belirtmeksizin)</span><br />
+                @Html.TextBoxFor(x => x.Price, new { style = "width:100%" })<br />
+                <span>Bir resim Yükle | Başlığın altında görünecektir</span>-->
+                <input type="file" name="file" asp-for="PictureURL" class="form-control" />
+                <span>Yorumunuz(İçinizden geldiği gibi özgür şekilde yazabilirsiniz <br /> REsim eklemek için manzara simgesine basabilirsiniz)</span>
                 @Html.TextAreaFor(x => x.Blog, new { id = "div_editor1" })
             </div><br />
-            <button class="submit btn btn-dark" style="width=100%">Kaydet</button>
-            <!-- Create a new DIV element with all of the content that we want inside the Editor -->
-
-
+            <button type="submit" class="btn btn-dark" style="width:100%">Kaydet</button>
         </form>
     </section>
     <script>

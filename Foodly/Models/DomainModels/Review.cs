@@ -24,8 +24,6 @@ namespace Foodly.Models
         [Required]
         public int Price { get; set; }
         [Required]
-        public string Adress { get; set; }
-        [Required]
         public bool Publish { get; set; }
         public User User { get; set; }
     }
