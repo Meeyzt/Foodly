@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Foodly.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201203134920_update-Reviews")]
-    partial class updateReviews
+    [Migration("20201204113801_initCreate")]
+    partial class initCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,10 @@ namespace Foodly.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BannerImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Blog")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -36,9 +40,9 @@ namespace Foodly.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PictureURL")
+                    b.Property<byte[]>("ImageData")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
@@ -87,6 +91,10 @@ namespace Foodly.Migrations
 
                     b.Property<int>("Password")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("ProfilePhoto")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");

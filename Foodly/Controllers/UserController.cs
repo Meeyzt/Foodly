@@ -30,7 +30,7 @@ namespace Foodly.Controllers
         [HttpPost]
         public IActionResult Register(string Username,int Password,string Email, string DisplayName, string SecretKey)
         {
-            User user = new User() { Username = Username, Password = Password, Email = Email, DisplayName = DisplayName, SecretKey = SecretKey, RegisterDate = DateTime.Now, Auth = "1" };
+            User user = new User() { Username = Username, Password = Password, Email = Email, DisplayName = DisplayName, SecretKey = SecretKey, RegisterDate = DateTime.Now, Auth = "1"};
             c.Users.Add(user);
             c.SaveChanges();
             return RedirectToAction(nameof(Login));

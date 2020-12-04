@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Foodly.Migrations
 {
-    public partial class initMigration : Migration
+    public partial class initCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,7 @@ namespace Foodly.Migrations
                     Password = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     DisplayName = table.Column<string>(nullable: false),
+                    ProfilePhoto = table.Column<byte[]>(nullable: false),
                     RegisterDate = table.Column<DateTime>(nullable: false),
                     SecretKey = table.Column<string>(nullable: false),
                     Auth = table.Column<string>(nullable: false)
@@ -34,12 +35,12 @@ namespace Foodly.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Header = table.Column<string>(nullable: false),
                     Blog = table.Column<string>(nullable: false),
-                    PictureURL = table.Column<string>(nullable: false),
                     RestaurantName = table.Column<string>(nullable: false),
                     Star = table.Column<double>(nullable: false),
                     PublishDate = table.Column<DateTime>(nullable: false),
+                    BannerImage = table.Column<string>(nullable: false),
+                    ImageData = table.Column<byte[]>(nullable: false),
                     Price = table.Column<int>(nullable: false),
-                    Adress = table.Column<string>(nullable: false),
                     Publish = table.Column<bool>(nullable: false),
                     UserID = table.Column<int>(nullable: true)
                 },
