@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Foodly.Models;
 using Foodly.Models.EfModels;
 using Microsoft.AspNetCore.Identity;
@@ -27,13 +28,44 @@ namespace Foodly.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Register(string Username,int Password,string Email, string DisplayName, string SecretKey)
+        User user = new User();
+       [HttpPost]
+        public IActionResult Register(string Username,int Password,int Password2,string Email, string DisplayName, string SecretKey)
         {
-            User user = new User() { Username = Username, Password = Password, Email = Email, DisplayName = DisplayName, SecretKey = SecretKey, RegisterDate = DateTime.Now, Auth = "1"};
-            c.Users.Add(user);
-            c.SaveChanges();
-            return RedirectToAction(nameof(Login));
+            if (Password == Password2)
+            {
+                foreach (var file in Request.Form.Files)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    file.CopyTo(ms);
+                    user.ProfilePhotoData = ms.ToArray();
+
+                    ms.Close();
+                    ms.Dispose();
+                    break;
+                }
+
+                string imageBase64Data = Convert.ToBase64String(user.ProfilePhotoData);
+                string BannerImage = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+
+                user.Auth = "User";
+                user.DisplayName = DisplayName;
+                user.Email = Email;
+                user.Password = Password;
+                user.RegisterDate = DateTime.Now;
+                user.SecretKey = SecretKey;
+                user.Username = Username;
+                user.ProfilePhoto = BannerImage;
+               
+                c.Users.Add(user);
+                c.SaveChanges();
+                return RedirectToAction(nameof(Login));
+            }
+            else
+            {
+                return Content("Şifreler uyuşmuyor");
+            }
+            
         }
     }
 }

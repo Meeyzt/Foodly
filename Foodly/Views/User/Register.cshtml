@@ -2,66 +2,55 @@
     ViewData["Title"] = "Register Page";
 }
 @model User
-@DateTime.Now
 
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-                <form class="login100-form validate-form flex-sb flex-w" method="post">
-                    <span class="login100-form-title p-b-32">
-                        Kayıt ol
-                    </span>
+<section class="hero-wrap hero-wrap-2" style="        background-image: url(../images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center mb-4">
+                <h1 class="mb-2 bread">Kayıt ol</h1>
 
-                    <span class="txt1 p-b-11">
-                        Kullanıcı Adı
-                    </span>
-                    <div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
-                        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <span class="txt1 p-b-11">
-                        Şifre
-                    </span>
-                    <div class="wrap-input100 validate-input m-b-12" data-validate="Password is required">
-                        <span class="btn-show-pass">
-                            <i class="fa fa-eye"></i>
-                        </span>
-                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <span class="txt1 p-b-11">
-                        Görünen isim
-                    </span>
-                    <div class="wrap-input100 validate-input m-b-36" data-validate="Username is *required">
-                        @Html.TextBoxFor(x => x.DisplayName, new { @class = "form-control" })
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <span class="txt1 p-b-11">
-                        E-Posta
-                    </span>
-                    <div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
-                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <span class="txt1 p-b-11">
-                        Secret Key
-                    </span>
-                    <div class="wrap-input100 validate-input m-b-36" data-validate="Username is required">
-                        @Html.TextBoxFor(x => x.SecretKey, new { @class="form-control" })
-                        <span class="focus-input100"></span>
-                    </div>
-
-                    <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            Kayıt ol
-                        </button>
-                    </div>
-
-                </form>
             </div>
         </div>
     </div>
+</section>
+<br />
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+            <form method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputUsername">Kullanıcı Adı</label>
+                        <input class="form-control" id="inputUsername" placeholder="Username" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">E-posta</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="E-posta" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword1">Şifre</label>
+                        <input type="password" class="form-control" id="inputPassword1" placeholder="Şifre" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword2">Tekrar Şifre</label>
+                        <input type="password" class="form-control" id="inputPassword2" placeholder="Tekrar-Şifre" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputDisplayName">Görünecek İsim</label>
+                        <input  class="form-control" id="inputDisplayName" placeholder="Görünecek İsim" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="SecretKey">Gizli Cevap</label>
+                        <input  class="form-control" id="inputSecretKey" placeholder="Gizli Cevap" required>
+                    </div><br />
+                          <div class="custom-file" style="margin-bottom:10px; width:20%; margin-left:20px;">
+                              <input type="file" name="file" class="form-control" />
+                              <div class="invalid-feedback">Bir resim seçin.</div>
+                          </div>
+                </div><br />
+                <button type="submit" class="btn btn-primary" style="width:100%">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+</div>

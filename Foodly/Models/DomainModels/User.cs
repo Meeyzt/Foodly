@@ -18,7 +18,9 @@ namespace Foodly.Models
         [Required]
         public string DisplayName { get; set; }
         [Required]
-        public Byte[] ProfilePhoto { get; set; }
+        public Byte[] ProfilePhotoData { get; set; }
+        [Required]
+        public string ProfilePhoto { get; set; }
         [Required]
         public DateTime RegisterDate { get; set; }
         [Required]
