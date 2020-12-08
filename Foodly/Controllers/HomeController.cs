@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Foodly.Data;
 using Foodly.Models;
-using Foodly.Models.EfModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace Foodly.Controllers
 {
@@ -20,9 +17,7 @@ namespace Foodly.Controllers
         }
         public object Index()
         {
-            Context c = new Context();
-            var variable = c.Users.ToList();
-            return View(variable);
+            return View();
         }
 
         public IActionResult Privacy()
