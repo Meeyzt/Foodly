@@ -7,7 +7,8 @@
 // Write your JavaScript code.
 
 var editor1 = new RichTextEditor("#textarea_editor1");  
-
+var editor2 = new RichTextEditor("#inp_editor2");
+editor1.setHTMLCode("Use inline HTML or setHTMLCode to set the default content.");  
 
 
 
