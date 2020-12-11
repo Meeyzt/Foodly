@@ -1,14 +1,16 @@
 ﻿using Foodly.Areas.Identity.Data;
 using Foodly.Models.Administration;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Foodly.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private UserManager<UserIdentity> _userManager;
@@ -63,41 +65,40 @@ namespace Foodly.Controllers
             IdentityRole role = await _roleManager.FindByIdAsync(id);
             List<UserIdentity> members = new List<UserIdentity>();
             List<UserIdentity> nonMembers = new List<UserIdentity>();
-             foreach (var user in _userManager.Users)
-             {
-                 var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
-                 list.Add(user);
-             }
+            foreach (UserIdentity user in _userManager.Users.ToList())
+            {
+                var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
+                list.Add(user);
+            }
             return View(new RoleEdit
             {
                 Role = role,
-                Members= members,
-                NonMembers= nonMembers
+                Members = members,
+                NonMembers = nonMembers
             });
-            
         }
         [HttpPost]
-        public async Task<IActionResult> Update(RoleModification Model)
+        public async Task<IActionResult> Update(RoleModification model)
         {
             IdentityResult result;
             if (ModelState.IsValid)
             {
-                foreach (var userId in Model.AddIds ?? new string[] { })
-                {
-                    UserIdentity user = await _userManager.FindByIdAsync(userId);
-                    if(user != null)
-                    {
-                        result = await _userManager.AddToRoleAsync(user, Model.RoleName);
-                        if (!result.Succeeded)
-                            Errors(result);
-                    }
-                }
-                foreach (var userId in Model.DeleteIds ?? new string[] { })
+                foreach (string userId in model.AddIds ?? new string[] { })
                 {
                     UserIdentity user = await _userManager.FindByIdAsync(userId);
                     if (user != null)
                     {
-                        result = await _userManager.RemoveFromRoleAsync(user, Model.RoleName);
+                        result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                        if (!result.Succeeded)
+                            Errors(result);
+                    }
+                }
+                foreach (string userId in model.DeleteIds ?? new string[] { })
+                {
+                    UserIdentity user = await _userManager.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
                         if (!result.Succeeded)
                             Errors(result);
                     }
@@ -106,7 +107,7 @@ namespace Foodly.Controllers
             if (ModelState.IsValid)
                 return RedirectToAction(nameof(Index));
             else
-                return await Update(Model.RoleId);
+                return await Update(model.RoleId);
         }
 
 
