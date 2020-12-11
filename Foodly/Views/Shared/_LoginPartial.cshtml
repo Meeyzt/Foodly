@@ -1,9 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Foodly.Areas.Identity.Data
-
+﻿
 @inject SignInManager<UserIdentity> SignInManager
 @inject UserManager<UserIdentity> UserManager
-
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
