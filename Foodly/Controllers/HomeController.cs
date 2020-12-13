@@ -1,7 +1,5 @@
-﻿using Foodly.Areas.Identity.Data;
-using Foodly.Data;
+﻿using Foodly.Data;
 using Foodly.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -9,7 +7,6 @@ using System.Diagnostics;
 
 namespace Foodly.Controllers
 {
-
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,7 +15,7 @@ namespace Foodly.Controllers
         {
             _logger = logger;
         }
-        public IActionResult Index()
+        public object Index()
         {
             return View();
         }

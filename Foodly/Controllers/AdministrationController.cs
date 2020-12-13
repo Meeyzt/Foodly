@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Foodly.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private UserManager<UserIdentity> _userManager;

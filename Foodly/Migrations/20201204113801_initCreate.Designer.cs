@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Foodly.Migrations
 {
-    [DbContext(typeof(EFContext))]
+    [DbContext(typeof(Context))]
     [Migration("20201204113801_initCreate")]
     partial class initCreate
     {
