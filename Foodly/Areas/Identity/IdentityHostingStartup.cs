@@ -21,7 +21,6 @@ namespace Foodly.Areas.Identity
                         context.Configuration.GetConnectionString("UserIdentityContextConnection")));
 
                 services.AddDefaultIdentity<UserIdentity>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<UserIdentityContext>();
             });
         }
