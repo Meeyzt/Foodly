@@ -12,6 +12,7 @@ using Foodly.Identity.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Foodly.Identity.Models.Identities;
 
 namespace Foodly.Identity
 {
@@ -29,7 +30,17 @@ namespace Foodly.Identity
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-        }
+
+                services.AddDbContext<UserIdentityContext>(options =>
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
+
+                services.AddDefaultIdentity<UserIdentity>()
+                        .AddRoles<IdentityRole>()
+                        .AddEntityFrameworkStores<UserIdentityContext>();
+
+                services.AddDistributedMemoryCache();
+            }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -37,7 +37,7 @@ namespace Foodly.Controllers
                                 Publish = x[i].Publish,
                                 PublishDate = x[i].PublishDate,
                                 Star = x[i].Star,
-                                User = x[i].User
+                                UserID = x[i].UserID
                             });
                         }
                     }
@@ -58,7 +58,7 @@ namespace Foodly.Controllers
                                 Publish = x[i].Publish,
                                 PublishDate = x[i].PublishDate,
                                 Star = x[i].Star,
-                                User = x[i].User
+                                UserID = x[i].UserID
                             });
                         }
                     }
@@ -89,7 +89,7 @@ namespace Foodly.Controllers
                                     Publish = x[i].Publish,
                                     PublishDate = x[i].PublishDate,
                                     Star = x[i].Star,
-                                    User = x[i].User
+                                    UserID = x[i].UserID
                                 });
                             }
                         }else
@@ -108,7 +108,7 @@ namespace Foodly.Controllers
                                     Publish = x[i].Publish,
                                     PublishDate = x[i].PublishDate,
                                     Star = x[i].Star,
-                                    User = x[i].User
+                                    UserID = x[i].UserID
                                 });
                             }
                         }
@@ -139,7 +139,7 @@ namespace Foodly.Controllers
                         Publish = x[i].Publish,
                         PublishDate = x[i].PublishDate,
                         Star = x[i].Star,
-                        User = x[i].User
+                        UserID = x[i].UserID
                     });
                 }
                 return View(y);
@@ -167,7 +167,7 @@ namespace Foodly.Controllers
                     ViewData["BlogPublishDate"] = blogContext.PublishDate;
                     ViewData["BlogRestaurantName"] = blogContext.RestaurantName;
                     ViewData["BlogStar"] = blogContext.Star;
-                    ViewData["BlogUser"] = blogContext.User;
+                    ViewData["BlogUser"] = blogContext.UserID;
 
                     return View();
                 }

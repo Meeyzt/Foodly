@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foodly.Identity.Models.Identities;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,8 +17,7 @@ namespace Foodly.Models
         [Required]
         public int Like { get; set; }
         public int Dislike { get; set; }
-        [Required]
-        public User User { get; set; }
+        public UserIdentity UserID { get; set; }
         [Required]
         public Review Review { get; set; }
     }

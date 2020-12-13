@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Foodly.Identity.Areas.Identity.Data
+namespace Foodly.Identity.Models.Identities
 {
     public class UserIdentity:IdentityUser
     {

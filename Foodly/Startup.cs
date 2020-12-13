@@ -54,20 +54,6 @@ namespace Foodly
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "blog",
-                    pattern: "{controller=Blogs}/{action=Blog}/{id?}");
-            });
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "BlogIndex",
-                    pattern: "{controller=Blogs}/{action=Index}/{id?}");
-            });
         }
     }
 }

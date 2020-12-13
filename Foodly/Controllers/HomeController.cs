@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Foodly.Identity.Models.Identities;
+using Foodly.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Foodly.Models;
-using Foodly.Models.EfModels;
+using System.Diagnostics;
 
 namespace Foodly.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private readonly UserManager<UserIdentity> user;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
         public object Index()
         {
-            Context c = new Context();
-            var variable = c.Users.ToList();
-            return View(variable);
+            return View();
         }
 
         public IActionResult Privacy()

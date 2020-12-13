@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Foodly.Identity.Areas.Identity.Data
+namespace Foodly.Identity.Models.Identities
 {
-    public class UserIdentityContext : IdentityDbContext<UserIdentity>
+    public class UserIdentityContext : IdentityDbContext<UserIdentity,IdentityRole,string>
     {
         public UserIdentityContext(DbContextOptions<UserIdentityContext> options)
             : base(options)

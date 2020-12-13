@@ -1,4 +1,4 @@
-﻿using Foodly.Areas.Identity.Data;
+﻿using Foodly.Identity.Models.Identities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Foodly.Areas.Identity.Pages.Account
+namespace Foodly.Views.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
