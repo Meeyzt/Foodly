@@ -4,14 +4,16 @@ using Foodly.Models.EfModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Foodly.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201212110734_UserDelete")]
+    partial class UserDelete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

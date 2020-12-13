@@ -21,11 +21,11 @@ namespace Foodly.Controllers
             _userManager = userManager;
         }
 
-        Context c = new Context();
+        EFContext c = new EFContext();
 
-        public async System.Threading.Tasks.Task<IActionResult> IndexAsync(int? id)
+        public IActionResult Index(int ?id)
         {
-            List<Review> x = c.Reviews.Where(i => i.Publish == true).ToList();
+            List<Review> x = c.Reviews.Where(i=> i.Publish==true).ToList();
             List<Review> y = new List<Review>();
             UserIdentity user = new UserIdentity();
             try
@@ -49,8 +49,8 @@ namespace Foodly.Controllers
                                 Publish = x[i].Publish,
                                 PublishDate = x[i].PublishDate,
                                 Star = x[i].Star,
-                                Id = x[i].Id
-                            }) ;
+                                UserID = x[i].UserID
+                            });
                         }
                     }
                     else
@@ -70,7 +70,7 @@ namespace Foodly.Controllers
                                 Publish = x[i].Publish,
                                 PublishDate = x[i].PublishDate,
                                 Star = x[i].Star,
-                                Id = x[i].Id
+                                UserID = x[i].UserID
                             });
                         }
                     }
@@ -84,8 +84,8 @@ namespace Foodly.Controllers
                     {
                         int count = (int)(id * 6);
                         int start = count - 6;
-                        
-                        if(count >= x.Count())
+
+                        if (count >= x.Count())
                         {
                             for (int i = start; i < x.Count(); i++)
                             {
@@ -101,10 +101,11 @@ namespace Foodly.Controllers
                                     Publish = x[i].Publish,
                                     PublishDate = x[i].PublishDate,
                                     Star = x[i].Star,
-                                    Id = x[i].Id
+                                    UserID = x[i].UserID
                                 });
                             }
-                        }else
+                        }
+                        else
                         {
                             for (int i = start; i <= count; i++)
                             {
@@ -120,7 +121,7 @@ namespace Foodly.Controllers
                                     Publish = x[i].Publish,
                                     PublishDate = x[i].PublishDate,
                                     Star = x[i].Star,
-                                    Id = x[i].Id
+                                    UserID = x[i].UserID
                                 });
                             }
                         }
@@ -128,13 +129,13 @@ namespace Foodly.Controllers
                     }
                     else
                     {
-                        return View(nameof(IndexAsync));
+                        return View(nameof(Index));
                     }
-                    
+
 
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 y.Clear();
                 for (int i = 0; i <= 6; i++)
@@ -151,21 +152,21 @@ namespace Foodly.Controllers
                         Publish = x[i].Publish,
                         PublishDate = x[i].PublishDate,
                         Star = x[i].Star,
-                        Id = x[i].Id
+                        UserID = x[i].UserID
                     });
                 }
                 return View(y);
             }
-      
-            
-            
+
+
+
         }
-      
-     public IActionResult Blog(int? id)
+
+        public IActionResult Blog(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(IndexAsync));
+                return RedirectToAction(nameof(Index));
             }
             else
             {
@@ -179,13 +180,13 @@ namespace Foodly.Controllers
                     ViewData["BlogPublishDate"] = blogContext.PublishDate;
                     ViewData["BlogRestaurantName"] = blogContext.RestaurantName;
                     ViewData["BlogStar"] = blogContext.Star;
-                    ViewData["BlogUser"] = _userManager.GetUserNameAsync(blogContext.Id);
+                    ViewData["BlogUser"] = _userManager.GetUserNameAsync(blogContext.UserID);
 
                     return View();
                 }
                 catch
                 {
-                    return RedirectToAction(nameof(IndexAsync));
+                    return RedirectToAction(nameof(Index));
                 }
 
             }
