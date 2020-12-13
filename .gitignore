@@ -234,3 +234,4 @@ _Pvt_Extensions
 .fake/
 
 \Models\EfModels\Context.cs
+Foodly.Identity/appsettings.json
