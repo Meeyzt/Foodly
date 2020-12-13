@@ -20,6 +20,6 @@ namespace Foodly.Models
         [Required]
         public Review Review { get; set; }
         [Required]
-        public UserIdentity Id { get; set; }
+        public string UserID { get; set; }
     }
 }
