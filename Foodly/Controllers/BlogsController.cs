@@ -1,8 +1,5 @@
-﻿using Foodly.Areas.Identity.Data;
-using Foodly.Models;
+﻿using Foodly.Models;
 using Foodly.Models.EfModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,23 +8,14 @@ using System.Linq;
 
 namespace Foodly.Controllers
 {
-
     public class BlogsController : Controller
     {
-        private readonly UserManager<UserIdentity> _userManager;
-
-        public BlogsController(UserManager<UserIdentity> userManager)
-        {
-            _userManager = userManager;
-        }
-
         Context c = new Context();
 
-        public async System.Threading.Tasks.Task<IActionResult> IndexAsync(int? id)
+        public IActionResult Index(int? id)
         {
             List<Review> x = c.Reviews.Where(i => i.Publish == true).ToList();
             List<Review> y = new List<Review>();
-            UserIdentity user = new UserIdentity();
             try
             {
                 if (id == null || id == 0 || id == 1)
@@ -49,8 +37,8 @@ namespace Foodly.Controllers
                                 Publish = x[i].Publish,
                                 PublishDate = x[i].PublishDate,
                                 Star = x[i].Star,
-                                Id = x[i].Id
-                            }) ;
+                                User = x[i].User
+                            });
                         }
                     }
                     else
@@ -70,7 +58,7 @@ namespace Foodly.Controllers
                                 Publish = x[i].Publish,
                                 PublishDate = x[i].PublishDate,
                                 Star = x[i].Star,
-                                Id = x[i].Id
+                                User = x[i].User
                             });
                         }
                     }
@@ -101,7 +89,7 @@ namespace Foodly.Controllers
                                     Publish = x[i].Publish,
                                     PublishDate = x[i].PublishDate,
                                     Star = x[i].Star,
-                                    Id = x[i].Id
+                                    User = x[i].User
                                 });
                             }
                         }else
@@ -120,7 +108,7 @@ namespace Foodly.Controllers
                                     Publish = x[i].Publish,
                                     PublishDate = x[i].PublishDate,
                                     Star = x[i].Star,
-                                    Id = x[i].Id
+                                    User = x[i].User
                                 });
                             }
                         }
@@ -128,7 +116,7 @@ namespace Foodly.Controllers
                     }
                     else
                     {
-                        return View(nameof(IndexAsync));
+                        return View(nameof(Index));
                     }
                     
 
@@ -151,7 +139,7 @@ namespace Foodly.Controllers
                         Publish = x[i].Publish,
                         PublishDate = x[i].PublishDate,
                         Star = x[i].Star,
-                        Id = x[i].Id
+                        User = x[i].User
                     });
                 }
                 return View(y);
@@ -165,7 +153,7 @@ namespace Foodly.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(IndexAsync));
+                return RedirectToAction(nameof(Index));
             }
             else
             {
@@ -179,26 +167,24 @@ namespace Foodly.Controllers
                     ViewData["BlogPublishDate"] = blogContext.PublishDate;
                     ViewData["BlogRestaurantName"] = blogContext.RestaurantName;
                     ViewData["BlogStar"] = blogContext.Star;
-                    ViewData["BlogUser"] = _userManager.GetUserNameAsync(blogContext.Id);
+                    ViewData["BlogUser"] = blogContext.User;
 
                     return View();
                 }
                 catch
                 {
-                    return RedirectToAction(nameof(IndexAsync));
+                    return RedirectToAction(nameof(Index));
                 }
 
             }
         }
 
         [HttpGet]
-        [Authorize]
         public IActionResult WriteBlog()
         {
             return View();
         }
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public IActionResult WriteBlog(string Header, string restaurantName, double star, int price, string Blog)
         {

@@ -1,5 +1,4 @@
-﻿using Foodly.Areas.Identity.Data;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,8 +17,8 @@ namespace Foodly.Models
         public int Like { get; set; }
         public int Dislike { get; set; }
         [Required]
-        public Review Review { get; set; }
+        public User User { get; set; }
         [Required]
-        public UserIdentity Id { get; set; }
+        public Review Review { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Foodly.Areas.Identity.Data;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,7 +28,6 @@ namespace Foodly.Models
         public int Price { get; set; }
         [Required]
         public bool Publish { get; set; }
-        [Required]
-        public UserIdentity Id { get; set; }
+        public User User { get; set; }
     }
 }
