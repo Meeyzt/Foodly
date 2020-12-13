@@ -2,7 +2,7 @@
 
 namespace Foodly.Models.EfModels
 {
-    public class EFContext:DbContext
+    public class Context:DbContext
     {
         public DbSet<Review> Reviews { get; set; }
 
