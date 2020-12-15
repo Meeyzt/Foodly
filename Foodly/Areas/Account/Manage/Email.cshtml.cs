@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
-namespace Foodly.Views.Account.Manage
+namespace Foodly.Areas.Identity.Account.Manage
 {
     public partial class EmailModel : PageModel
     {

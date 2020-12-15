@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
-namespace Foodly.Views.Account.Manage
+namespace Foodly.Areas.Identity.Account.Manage
 {
     public static class ManageNavPages
     {

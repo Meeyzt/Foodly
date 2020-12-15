@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Foodly.Identity.Models.Identities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +28,14 @@ namespace Foodly
         {
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddDbContext<UserIdentityContext>(options =>
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDefaultIdentity<UserIdentity>()
+                    .AddRoles<IdentityRole>()
+                    .AddEntityFrameworkStores<UserIdentityContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
